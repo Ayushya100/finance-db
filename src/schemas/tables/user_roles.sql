@@ -1,0 +1,14 @@
+CREATE TABLE user_roles (
+    id TEXT PRIMARY KEY DEFAULT ('068EUR' || UPPER(REPLACE(gen_random_uuid()::TEXT, '-', ''))),
+    role_code VARCHAR(25) NOT NULL UNIQUE,
+    role_name VARCHAR(100) NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    is_default BOOLEAN DEFAULT FALSE,
+    version INT NOT NULL DEFAULT 1,
+    created_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by VARCHAR(255) NOT NULL DEFAULT 'SYSTEM',
+    modified_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    modified_by VARCHAR(255) NOT NULL DEFAULT 'SYSTEM',
+    is_deleted BOOLEAN DEFAULT FALSE,
+    CHECK (id ~ '^068EUR[A-F0-9]{32}$')
+);

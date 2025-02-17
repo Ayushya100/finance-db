@@ -1,0 +1,16 @@
+CREATE TABLE user_finance (
+    id TEXT PRIMARY KEY DEFAULT ('063EUF' || UPPER(REPLACE(gen_random_uuid()::TEXT, '-', ''))),
+    user_id TEXT NOT NULL,
+    available_funds NUMERIC(10, 2) NOT NULL DEFAULT 0,
+    ttl_income NUMERIC(10, 2) NOT NULL DEFAULT 0,
+    ttl_investment NUMERIC(10, 2) NOT NULL DEFAULT 0,
+    ttl_expense NUMERIC(10, 2) NOT NULL DEFAULT 0,
+    version INT NOT NULL DEFAULT 1,
+    created_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by VARCHAR(255) NOT NULL DEFAULT 'SYSTEM',
+    modified_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    modified_by VARCHAR(255) NOT NULL DEFAULT 'SYSTEM',
+    is_deleted BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    CHECK (id ~ '^063EUF[A-F0-9]{32}$')
+);

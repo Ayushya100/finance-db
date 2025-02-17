@@ -1,0 +1,21 @@
+CREATE TABLE txn_accounts (
+    id TEXT PRIMARY KEY DEFAULT ('091ITA' || UPPER(REPLACE(gen_random_uuid()::TEXT, '-', ''))),
+    user_id TEXT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    acc_name VARCHAR(50),
+    acc_number VARCHAR(18) NOT NULL,
+    acc_type VARCHAR(50) NOT NULL,
+    acc_date DATE NOT NULL,
+    holder_name VARCHAR(50) NOT NULL,
+    bank_name VARCHAR(50),
+    amount NUMERIC(10, 2) NOT NULL DEFAULT 0,
+    is_active BOOLEAN DEFAULT TRUE,
+    version INT NOT NULL DEFAULT 1,
+    created_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by VARCHAR(255) NOT NULL DEFAULT 'SYSTEM',
+    modified_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    modified_by VARCHAR(255) NOT NULL DEFAULT 'SYSTEM',
+    is_deleted BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    CHECK (id ~ '^091ITA[A-F0-9]{32}$')
+);

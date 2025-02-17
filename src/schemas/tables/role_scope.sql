@@ -1,0 +1,14 @@
+CREATE TABLE role_scope (
+    id TEXT PRIMARY KEY DEFAULT ('061DRS' || UPPER(REPLACE(gen_random_uuid()::TEXT, '-', ''))),
+    role_id TEXT NOT NULL,
+    scope_id TEXT NOT NULL,
+    version INT NOT NULL DEFAULT 1,
+    created_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by VARCHAR(255) NOT NULL DEFAULT 'SYSTEM',
+    modified_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    modified_by VARCHAR(255) NOT NULL DEFAULT 'SYSTEM',
+    is_deleted BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (role_id) REFERENCES user_roles(id) ON DELETE CASCADE,
+    FOREIGN KEY (scope_id) REFERENCES user_scopes(id) ON DELETE CASCADE,
+    CHECK (id ~ '^061DRS[A-F0-9]{32}$')
+);

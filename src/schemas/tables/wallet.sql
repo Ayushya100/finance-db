@@ -1,0 +1,17 @@
+CREATE TABLE wallet (
+    id TEXT PRIMARY KEY DEFAULT ('057LWA' || UPPER(REPLACE(gen_random_uuid()::TEXT, '-', ''))),
+    user_id TEXT NOT NULL,
+    wallet_name VARCHAR(50) NOT NULL,
+    wallet_desc VARCHAR(100),
+    balance NUMERIC(10, 2) NOT NULL DEFAULT 0,
+    metadata VARCHAR(255),
+    is_active BOOLEAN DEFAULT TRUE,
+    version INT NOT NULL DEFAULT 1,
+    created_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by VARCHAR(255) NOT NULL DEFAULT 'SYSTEM',
+    modified_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    modified_by VARCHAR(255) NOT NULL DEFAULT 'SYSTEM',
+    is_deleted BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    CHECK (id ~ '^057LWA[A-F0-9]{32}$')
+);

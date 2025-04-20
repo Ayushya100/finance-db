@@ -1,0 +1,23 @@
+CREATE TABLE txn_cards (
+    id TEXT PRIMARY KEY DEFAULT UPPER(REPLACE(uuid_generate_v4()::TEXT, '-', '')),
+    user_id TEXT NOT NULL,
+    acc_id TEXT,
+    token TEXT NOT NULL,
+    card_number TEXT NOT NULL UNIQUE,
+    card_type TEXT NOT NULL,
+    holder_name TEXT,
+    exp_date DATE NOT NULL,
+    balance BIGINT DEFAULT 0,
+    card_limit BIGINT DEFAULT 0,
+    metadata TEXT,
+    is_active BOOLEAN DEFAULT TRUE,
+    expired BOOLEAN DEFAULT FALSE,
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_by VARCHAR(100) DEFAULT 'SYSTEM',
+    modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_by VARCHAR(100) DEFAULT 'SYSTEM',
+    version INT DEFAULT 1,
+    is_deleted BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (acc_id) REFERENCES txn_accounts(id) ON DELETE CASCADE
+);

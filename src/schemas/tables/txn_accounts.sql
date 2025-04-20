@@ -1,0 +1,22 @@
+CREATE TABLE txn_accounts (
+    id TEXT PRIMARY KEY DEFAULT UPPER(REPLACE(uuid_generate_v4()::TEXT, '-', '')),
+    user_id TEXT NOT NULL,
+    token TEXT NOT NULL,
+    acc_name TEXT NOT NULL,
+    acc_number TEXT NOT NULL UNIQUE,
+    acc_type TEXT NOT NULL,
+    acc_date DATE NOT NULL,
+    holder_name TEXT NOT NULL,
+    bank_name TEXT,
+    physical_acc BOOLEAN DEFAULT TRUE,
+    balance BIGINT DEFAULT 0,
+    is_active BOOLEAN DEFAULT TRUE,
+    metadata TEXT,
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_by VARCHAR(100) DEFAULT 'SYSTEM',
+    modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_by VARCHAR(100) DEFAULT 'SYSTEM',
+    version INT DEFAULT 1,
+    is_deleted BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);

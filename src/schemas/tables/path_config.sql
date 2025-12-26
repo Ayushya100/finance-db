@@ -4,7 +4,7 @@ CREATE TABLE path_config (
     id TEXT PRIMARY KEY DEFAULT UPPER(REPLACE(uuid_generate_v4()::TEXT, '-', '')),
     svc_id TEXT NOT NULL,
     path TEXT NOT NULL,
-    method method_opt VARCHAR(8) NOT NULL,
+    method method_opt NOT NULL,
     validations TEXT[],
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_by VARCHAR(100) DEFAULT 'SYSTEM',

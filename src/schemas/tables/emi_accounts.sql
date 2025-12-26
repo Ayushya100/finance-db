@@ -14,7 +14,7 @@ CREATE TABLE emi_accounts (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     outstanding_amount NUMERIC(18,2) NOT NULL,
-    status emi_status_opt TEXT DEFAULT 'ACTIVE',
+    status emi_status_opt DEFAULT 'ACTIVE',
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_by VARCHAR(100) DEFAULT 'SYSTEM',
     modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

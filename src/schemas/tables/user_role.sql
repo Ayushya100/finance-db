@@ -2,8 +2,8 @@ CREATE TABLE user_role (
     id TEXT PRIMARY KEY DEFAULT UPPER(REPLACE(uuid_generate_v4()::TEXT, '-', '')),
     role_cd VARCHAR(255) NOT NULL,
     role_desc TEXT NOT NULL,
-    is_active BOOLEAN DEFAULT true
-    is_default BOOLEAN DEFAULT false
+    is_active BOOLEAN DEFAULT true,
+    is_default BOOLEAN DEFAULT false,
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_by VARCHAR(100) DEFAULT 'SYSTEM',
     modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

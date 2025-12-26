@@ -11,7 +11,7 @@ CREATE TABLE emi_schedules (
     paid_amount NUMERIC(18,2) DEFAULT 0,
     payment_date DATE,
     transaction_id TEXT,
-    status emi_schedule_status_opt VARCHAR(25) DEFAULT 'PENDING',
+    status emi_schedule_status_opt DEFAULT 'PENDING',
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_by VARCHAR(100) DEFAULT 'SYSTEM',
     modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

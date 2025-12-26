@@ -5,7 +5,7 @@ CREATE TABLE dashboard_setup (
     header_id TEXT NOT NULL,
     category_cd TEXT NOT NULL,
     category_name TEXT NOT NULL,
-    category_type dashboard_category_type_opt VARCHAR(25) NOT NULL,
+    category_type dashboard_category_type_opt NOT NULL,
     options JSON,
     default_value TEXT,
     user_applicable BOOLEAN DEFAULT true,

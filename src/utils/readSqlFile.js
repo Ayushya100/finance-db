@@ -7,9 +7,12 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const readSqlFile = async(relativePath, filename) => {
-    const filePath = path.join(__dirname, `../schemas/${relativePath}/${filename}.sql`);
-    return await fs.readFile(filePath, 'utf8');
-}
+const readSqlFile = async (relativePath, filename) => {
+  const filePath = path.join(
+    __dirname,
+    `../schemas/${relativePath}/${filename}.sql`
+  );
+  return await fs.readFile(filePath, 'utf8');
+};
 
 export default readSqlFile;

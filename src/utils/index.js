@@ -1,7 +1,5 @@
 'use strict';
 
-import readSqlFile from "./readSqlFile.js";
+import readSqlFile from './readSqlFile.js';
 
-export {
-    readSqlFile
-};
+export { readSqlFile };

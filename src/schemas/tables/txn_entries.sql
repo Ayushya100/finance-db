@@ -4,9 +4,9 @@ CREATE TYPE entry_type_opt AS ENUM ('DEBIT', 'CREDIT');
 CREATE TABLE txn_entries (
     id TEXT PRIMARY KEY DEFAULT UPPER(REPLACE(uuid_generate_v4()::TEXT, '-', '')),
     transaction_id TEXT NOT NULL,
-    instrument_type instrument_type_opt VARCHAR(25) NOT NULL,
+    instrument_type instrument_type_opt NOT NULL,
     instrument_id TEXT NOT NULL,
-    entry_type entry_type_opt TEXT NOT NULL,
+    entry_type entry_type_opt NOT NULL,
     amount NUMERIC(18,2) NOT NULL CHECK (amount > 0),
     balance_before NUMERIC(18,2) NOT NULL,
     balance_after NUMERIC(18,2) NOT NULL,

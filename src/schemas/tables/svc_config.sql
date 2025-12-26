@@ -4,7 +4,7 @@ CREATE TABLE svc_config (
     id TEXT PRIMARY KEY DEFAULT UPPER(REPLACE(uuid_generate_v4()::TEXT, '-', '')),
     microservice VARCHAR(255) NOT NULL,
     environment VARCHAR(6) NOT NULL,
-    protocol protocol_opt VARCHAR(6) DEFAULT 'HTTP',
+    protocol protocol_opt DEFAULT 'HTTP',
     port VARCHAR(6) NOT NULL,
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_by VARCHAR(100) DEFAULT 'SYSTEM',

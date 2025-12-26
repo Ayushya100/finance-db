@@ -5,7 +5,7 @@ CREATE TABLE recurring_transaction_runs (
     recurring_id TEXT NOT NULL,
     scheduled_date DATE NOT NULL,
     transaction_id TEXT,
-    status recurring_txn_status_opt VARCHAR(25) NOT NULL,
+    status recurring_txn_status_opt NOT NULL,
     error_message TEXT,
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_by VARCHAR(100) DEFAULT 'SYSTEM',
